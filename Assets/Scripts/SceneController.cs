@@ -28,6 +28,12 @@ public class SceneController : MonoBehaviour
         Debug.Log("Loaded level " + level);
     }
 
+    public static void Exit()
+    {
+        Debug.Log("Application Exit");
+        Application.Quit();
+    }
+
     static public int Level
     {
         get;

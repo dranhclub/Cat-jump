@@ -5,7 +5,7 @@ using UnityEngine;
 public class BridgeController : MonoBehaviour
 {
     [SerializeField]
-    private Bridge bridge;
+    private Bridge[] bridges;
 
     private SoundController soundController;
 
@@ -17,7 +17,10 @@ public class BridgeController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         soundController.playHitBtnSfx();
-        bridge.Activated = true;
+        foreach(var bridge in bridges)
+        {
+            bridge.Activated = true;
+        }
     }
 }
 

@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 15.0f;
-    [SerializeField] private float walkSpeed = 2.0f;
-    [SerializeField] private float rotateSpeed = 0.25f;
-    [SerializeField] private float minPressTime = 0.5f;
-    [SerializeField] private float maxPressTime = 1.0f;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float minPressTime;
+    [SerializeField] private float maxPressTime;
     [SerializeField] private bool isOnGround;
-    [SerializeField] private float waitTime = 1.0f;
 
     public GameObject centerOfMass;
     public Slider slider;
@@ -59,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 float holdTime = Time.time - keyDownTime;
                 holdTime = Mathf.Clamp(holdTime, minPressTime, maxPressTime);
                 playerRb.drag = 0;
-                playerRb.AddRelativeForce(new Vector3(0, 1, 1) * jumpForce * holdTime, ForceMode.Impulse);
+                playerRb.AddRelativeForce(new Vector3(0, 2, 1) * jumpForce * holdTime, ForceMode.Impulse);
                 playerAnimator.SetFloat("Jump_speed_f", 1.0f / holdTime);
                 playerAnimator.SetBool("Pre_jump_b", false);
                 soundController.playJumpSfx();

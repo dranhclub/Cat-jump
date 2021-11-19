@@ -9485,11 +9485,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd31055a1222d245ab4dd56926d42f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 4
-  walkSpeed: 2
-  rotateSpeed: 0.25
+  jumpForce: 1
+  walkSpeed: 2.5
+  rotateSpeed: 0.35
   minPressTime: 0.5
-  maxPressTime: 2
+  maxPressTime: 3
   isOnGround: 0
   waitTime: 1
   centerOfMass: {fileID: 8402566073272308499}
