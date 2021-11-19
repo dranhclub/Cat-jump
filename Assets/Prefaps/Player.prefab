@@ -9487,8 +9487,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 4
   walkSpeed: 2
+  rotateSpeed: 0.25
   minPressTime: 0.5
-  maxPressTime: 3
+  maxPressTime: 2
   isOnGround: 0
   waitTime: 1
   centerOfMass: {fileID: 8402566073272308499}

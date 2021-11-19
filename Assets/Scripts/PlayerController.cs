@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 15.0f;
     [SerializeField] private float walkSpeed = 2.0f;
+    [SerializeField] private float rotateSpeed = 0.25f;
     [SerializeField] private float minPressTime = 0.5f;
-    [SerializeField] private float maxPressTime = 3.0f;
+    [SerializeField] private float maxPressTime = 1.0f;
     [SerializeField] private bool isOnGround;
     [SerializeField] private float waitTime = 1.0f;
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticelInput = Input.GetAxis("Vertical");
-            transform.Rotate(Vector3.up, horizontalInput);
+            transform.Rotate(Vector3.up, horizontalInput * rotateSpeed);
             playerRb.AddRelativeForce(Vector3.forward * walkSpeed * verticelInput);
             playerAnimator.SetFloat("Speed_f", Mathf.Abs(verticelInput) + Mathf.Abs(horizontalInput));
 
