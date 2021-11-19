@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float keyDownTime;
 
     private GameController gameController;
+    private SoundController soundController;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         gameController = GameObject.Find("GameManager").GetComponent<GameController>();
+        soundController = GameObject.Find("Sound").GetComponent<SoundController>();
         initDrag = playerRb.drag;
         isOnGround = false;
     }
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
                 playerRb.AddRelativeForce(new Vector3(0, 1, 1) * jumpForce * holdTime, ForceMode.Impulse);
                 playerAnimator.SetFloat("Jump_speed_f", 1.0f / holdTime);
                 playerAnimator.SetBool("Pre_jump_b", false);
+                soundController.playJumpSfx();
             }
 
 
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
             playerRb.drag = initDrag;
         } else if (collision.gameObject.CompareTag("Trap"))
         {
+            soundController.playHitTrapSfx();
             gameController.Die();
         }
     }
@@ -87,10 +91,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EndPoint"))
         {
-            SceneController.NextScene();
+            gameController.CompleteLevel();
         }
         else if (other.gameObject.CompareTag("Star"))
         {
+            soundController.playHitStarSfx();
             gameController.Lives += 1;
             Destroy(other.gameObject);
         }
