@@ -2,42 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameController : MonoBehaviour
 {
+    private int lives;
+
+    [SerializeField]
+    private TextMeshProUGUI livesTxt;
+    [SerializeField]
+    private TextMeshProUGUI levelTxt;
+    [SerializeField]
+    private Button musicBtn;
+    [SerializeField]
+    private Button soundBtn;
     [SerializeField]
     private GameObject spawnPoint;
     private GameObject player;
-    private AudioController soundController;
-    private UIController uiController;
+    private SoundController soundController;
 
     private bool falling = false;
-
+    // Start is called before the first frame update
     void Start()
     {
+        Lives = 3;
         player = GameObject.Find("Player");
-        soundController = GameObject.Find("Sound").GetComponent<AudioController>();
-        uiController = GameObject.Find("Canvas").GetComponent<UIController>();
+        soundController = GameObject.Find("Sound").GetComponent<SoundController>();
         Respawn();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Check falling
         if (player.transform.position.y >= -1)
         {
             falling = false;
         }
-
-        // If is falling, play falling sound
         if (!falling && player.transform.position.y < -2)
         {
             falling = true;
             soundController.playFallingSfx();
         }
-
         if (player.transform.position.y < -10)
         {
             Die();
@@ -46,8 +51,7 @@ public class GameController : MonoBehaviour
 
     public void Die()
     {
-        Static.lives -= 1;
-        uiController.UpdateUI();
+        Lives -= 1;
         Respawn();
     }
 
@@ -61,11 +65,29 @@ public class GameController : MonoBehaviour
     {
         soundController.playCompleteLVSfx();
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(++Static.level);
+        SceneController.NextScene();
     }
-
     public void CompleteLevel()
     {
         StartCoroutine(_CompleteLevel());
+    }
+
+    public void UpdateUI()
+    {
+        livesTxt.text = $"Lives: {lives}";
+        levelTxt.text = $"Level: {SceneController.Level}";
+    }
+
+    public int Lives
+    {
+        get
+        {
+            return lives;
+        }
+        set
+        {
+            lives = value;
+            UpdateUI();
+        }
     }
 }

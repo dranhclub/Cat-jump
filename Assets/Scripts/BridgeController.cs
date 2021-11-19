@@ -7,11 +7,11 @@ public class BridgeController : MonoBehaviour
     [SerializeField]
     private Bridge[] bridges;
 
-    private SoundController soundController;
+    private AudioController soundController;
 
     void Start()
     {
-        soundController = GameObject.Find("Sound").GetComponent<SoundController>();    
+        soundController = GameObject.Find("Sound").GetComponent<AudioController>();    
     }
 
     private void OnTriggerEnter(Collider other)

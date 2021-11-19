@@ -48,7 +48,7 @@ MonoBehaviour:
   hitTrapSound: {fileID: 8300000, guid: 5b94334dd13c98845b78656da0cddd90, type: 3}
   hitStarSound: {fileID: 8300000, guid: ddc45f033ffeda048bb333a7b586240a, type: 3}
   completeLVSound: {fileID: 8300000, guid: ff0575d2c64c7e748b5ce4e56b531787, type: 3}
-  fallingSound: {fileID: 8300000, guid: ca6f39762a633354cb1d62fce34b49c3, type: 3}
+  fallingSound: {fileID: 8300000, guid: 40c855f6c0b6e8b4ea5d409174e57d15, type: 3}
   hitBtnSound: {fileID: 8300000, guid: eb6c41826d67f9445b3f0818dcc28ba6, type: 3}
 --- !u!82 &4532092850799469529
 AudioSource:
@@ -61,10 +61,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

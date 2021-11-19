@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private float keyDownTime;
 
     private GameController gameController;
-    private SoundController soundController;
+    private UIController uiController;
+    private AudioController soundController;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         gameController = GameObject.Find("GameManager").GetComponent<GameController>();
-        soundController = GameObject.Find("Sound").GetComponent<SoundController>();
+        soundController = GameObject.Find("Sound").GetComponent<AudioController>();
+        uiController = GameObject.Find("Canvas").GetComponent<UIController>();
         initDrag = playerRb.drag;
         isOnGround = false;
     }
@@ -96,7 +98,8 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Star"))
         {
             soundController.playHitStarSfx();
-            gameController.Lives += 1;
+            Static.lives += 1;
+            uiController.UpdateUI();
             Destroy(other.gameObject);
         }
     }
