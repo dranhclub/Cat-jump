@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkSpeed = 2.0f;
     [SerializeField] private float minPressTime = 0.5f;
     [SerializeField] private float maxPressTime = 3.0f;
-    [SerializeField] private bool isOnGround = true;
+    [SerializeField] private bool isOnGround;
     [SerializeField] private float waitTime = 1.0f;
 
     public GameObject centerOfMass;
@@ -22,12 +22,16 @@ public class PlayerController : MonoBehaviour
     private float initDrag;
     private float keyDownTime;
 
+    private GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
+        gameController = GameObject.Find("GameManager").GetComponent<GameController>();
         initDrag = playerRb.drag;
+        isOnGround = false;
     }
 
     // Update is called once per frame
@@ -73,7 +77,10 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
             playerRb.drag = initDrag;
-        } 
+        } else if (collision.gameObject.CompareTag("Trap"))
+        {
+            gameController.Die();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +88,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("EndPoint"))
         {
             SceneController.NextScene();
+        }
+        else if (other.gameObject.CompareTag("Star"))
+        {
+            gameController.Lives += 1;
+            Destroy(other.gameObject);
         }
     }
 }

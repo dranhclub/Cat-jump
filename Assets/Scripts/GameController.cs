@@ -27,9 +27,14 @@ public class GameController : MonoBehaviour
     {
         if (player.transform.position.y < -10)
         {
-            Lives -= 1;
-            Respawn();
+            Die();
         }
+    }
+
+    public void Die()
+    {
+        Lives -= 1;
+        Respawn();
     }
 
     private void Respawn()

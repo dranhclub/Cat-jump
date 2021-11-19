@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - EndPoint
+  - Trap
+  - Star
   layers:
   - Default
   - TransparentFX
