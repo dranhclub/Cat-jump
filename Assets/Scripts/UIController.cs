@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI livesTxt;
-    [SerializeField]
-    private TextMeshProUGUI levelTxt;
-    [SerializeField]
-    private TextMeshProUGUI musicBtnTxt;
-    [SerializeField]
-    private TextMeshProUGUI soundBtnTxt;
-    [SerializeField]
+
+    [SerializeField] private TextMeshProUGUI livesTxt;
+    [SerializeField] private TextMeshProUGUI levelTxt;
+    [SerializeField] private TextMeshProUGUI musicBtnTxt;
+    [SerializeField] private TextMeshProUGUI soundBtnTxt;
+    [SerializeField] private Slider slider;
+
+
     private AudioController audioController;
 
     private void Start()
     {
+        audioController = GameObject.Find("Sound").GetComponent<AudioController>();
         UpdateUI();   
+    }
+
+    public void SetSliderValue(float value)
+    {
+        slider.SetValueWithoutNotify(value);
     }
 
     public void SwichMusicOnOff()

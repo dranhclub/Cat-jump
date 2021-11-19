@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxPressTime;
     [SerializeField] private bool isOnGround;
 
-    public GameObject centerOfMass;
-    public Slider slider;
-
     private Rigidbody playerRb;
     private Animator playerAnimator;
 
@@ -29,6 +26,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jumpForce = 1;
+        walkSpeed = 2.5f;
+        rotateSpeed = 0.35f;
+        minPressTime = 0.5f;
+        maxPressTime = 3.0f;
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
         gameController = GameObject.Find("GameManager").GetComponent<GameController>();
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
             {
                 float holdTime = Time.time - keyDownTime;
                 holdTime = Mathf.Clamp(holdTime, minPressTime, maxPressTime);
-                slider.SetValueWithoutNotify((holdTime - minPressTime) / (maxPressTime - minPressTime));
+                uiController.SetSliderValue((holdTime - minPressTime) / (maxPressTime - minPressTime));
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
             playerRb.drag = initDrag;
+            uiController.SetSliderValue(0);
         } else if (collision.gameObject.CompareTag("Trap"))
         {
             soundController.playHitTrapSfx();
