@@ -43,6 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8b8f4a72fbeb44f93694df5b6aa379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  livesTxt: {fileID: 0}
-  levelTxt: {fileID: 0}
   spawnPoint: {fileID: 0}

@@ -7,7 +7,6 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
     private GameObject spawnPoint;
     private GameObject player;
     private AudioController soundController;
@@ -20,6 +19,7 @@ public class GameController : MonoBehaviour
         player = GameObject.Find("Player");
         soundController = GameObject.Find("Sound").GetComponent<AudioController>();
         uiController = GameObject.Find("Canvas").GetComponent<UIController>();
+        spawnPoint = GameObject.Find("SpawnPoint");
         Respawn();
     }
 
