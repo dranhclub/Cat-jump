@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIController : MonoBehaviour
@@ -13,13 +14,33 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soundBtnTxt;
     [SerializeField] private Slider slider;
 
+    [SerializeField] private GameObject panel;
+    [SerializeField] private Button exitToMenuBtn;
+
 
     private AudioController audioController;
 
     private void Start()
     {
         audioController = GameObject.Find("Sound").GetComponent<AudioController>();
+        exitToMenuBtn.onClick.AddListener(ExitToMainMenu);
         UpdateUI();   
+    }
+
+    private void Update()
+    {
+        if (Static.isPause)
+        {
+            panel.SetActive(true);
+        } else
+        {
+            panel.SetActive(false);
+        }
+    }
+
+    private void ExitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void SetSliderValue(float value)

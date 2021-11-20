@@ -6,7 +6,7 @@ public class Static : MonoBehaviour
 {
     public static int lives = 3;
     public static int level = 1;
-    public static bool gamepause = false;
+    public static bool isPause = false;
     public static bool musicOn = true;
     public static bool soundOn = true;
 

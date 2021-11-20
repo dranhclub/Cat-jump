@@ -14,9 +14,15 @@ public class AudioController : MonoBehaviour
     private AudioSource bgMusicAudioSource;
     private AudioSource soundAudioSource;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        bgMusicAudioSource = GameObject.Find("Music").GetComponent<AudioSource>();
+        DontDestroyOnLoad(bgMusicAudioSource.gameObject);
+    }
+
     private void Start()
     {
-        bgMusicAudioSource = GameObject.Find("Music").GetComponent<AudioSource>();
         soundAudioSource = GetComponent<AudioSource>();
         if (Static.musicOn)
         {

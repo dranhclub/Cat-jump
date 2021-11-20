@@ -25,6 +25,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SwitchPause();
+        }
         // Check falling
         if (player.transform.position.y >= -1)
         {
@@ -44,6 +48,10 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SwitchPause()
+    {
+        Static.isPause = !Static.isPause;
+    }
     public void Die()
     {
         Static.lives -= 1;
