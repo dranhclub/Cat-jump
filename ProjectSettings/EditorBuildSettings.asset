@@ -9,6 +9,36 @@ EditorBuildSettings:
     path: Assets/_Scenes/Main Menu.unity
     guid: 45406d9e266ecec4b93a823b86613cf2
   - enabled: 1
+    path: Assets/_Scenes/TA LV 1.unity
+    guid: 41aea9db6e93b964487eaf9709569d1b
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 2.unity
+    guid: 52f499e0f2b60f94cb276cf083ad4d03
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 3.unity
+    guid: 54b1c298ab9b68c4f995cab82bc19cd1
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 4.unity
+    guid: 5ecc1b09ca98a144ea2f06bf8db39622
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 5.unity
+    guid: 69e7fb7bb290b064eb65cb425eb957f4
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 6.unity
+    guid: fecb28e76f71e964c8dcfca18c6ea546
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 7.unity
+    guid: 57bd9a243bcb23c4ab37c2638e72bbcb
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 8.unity
+    guid: 985e281129443f947987cbcaa1bb1a4d
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 9.unity
+    guid: c7edd3ea51f7b18448dedf148e827bf1
+  - enabled: 1
+    path: Assets/_Scenes/TA LV 10.unity
+    guid: 610a8093d56ed164d84bf66f816da2f7
+  - enabled: 1
     path: Assets/_Scenes/LV 1.unity
     guid: b041494afa38914468d36f5a1247e4e8
   - enabled: 1
