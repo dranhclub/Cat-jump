@@ -27,3 +27,6 @@ Trò chơi điều khiển nhân vật là mèo Yummi, nhảy nhót trên các k
 - Nếu hết mạng, trò chơi kết thúc. 
 - Ăn ngôi sao để tăng mạng. 
 - Yummi cần đi tới các nút bấm để có thể mở cầu, để đi đến những nơi xa hơn trong bản đồ.
+
+## Gameplay video
+https://photos.app.goo.gl/mPL9Su8XKzTXWsKM6
